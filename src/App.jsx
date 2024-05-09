@@ -1,17 +1,15 @@
-import data from './data.json';
-
-console.log(data); // Check what this prints
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from './features/counterSlice';
 
 function App() {
+  const count = useSelector((c) => c.counter.value ) 
+  const dispatch = useDispatch();
+
   return (
     <div className="App">
-
-      {data.employees.map( (item,index) => (
-        <div key={index} className="data">
-            <p>{JSON.stringify(item)}</p>
-        </div>
-      ))}
-      
+      <button onClick={()=> dispatch(increment())}>Increment</button>
+      <p>{count}</p>
+      <button  onClick={()=> dispatch(decrement())}>Decrement</button>
     </div>
   );
 }
