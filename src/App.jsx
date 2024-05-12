@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={()=> dispatch(increment())}>Increment</button>
-      
+      <p>{count}</p>
       <button  onClick={()=> dispatch(decrement())}>Decrement</button>
     </div>
   );
