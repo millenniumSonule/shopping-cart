@@ -1,0 +1,49 @@
+* {
+    margin: 10px;
+}
+
+.logo-navbar img {
+    width: 104px;
+    height: 89px;
+}
+
+.logo-navbar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-texts {
+    margin-left: 28px;
+    font-family: Arial, sans-serif; /* Use a professional font */
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-texts a {
+    text-decoration: none; /* Remove underline from the link */
+    color: #333; /* Set text color */
+    padding: 10px 15px; /* Add padding for spacing */
+    border-radius: 5px; /* Add rounded corners */
+    transition: background-color 0.3s; /* Add smooth transition effect */
+  }
+  
+  .nav-texts a:hover {
+    background-color: #ddd; /* Change background color on hover */
+  }
+  
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 14px;
+  }
+  
+  .cart-logo {
+    height: 40px;
+    margin-left: 10px;
+  }
+
+  .adjust-cart {
+    display: flex;
+    align-items: center;
+  }
