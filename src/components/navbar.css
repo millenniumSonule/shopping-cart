@@ -36,6 +36,9 @@
     align-items: center;
     justify-content: space-between;
     margin: 14px;
+    background: beige;
+    padding: 10px;
+    border-radius: 10px;
   }
   
   .cart-logo {

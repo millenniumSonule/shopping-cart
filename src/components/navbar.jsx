@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from './Assets/fake-logo.png'
 import cart from './Assets/cart.png'
 import './navbar.css'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 const Navbar = () => {
+
   return (
     <div className="nav-bar">
       <div className="logo-navbar">
