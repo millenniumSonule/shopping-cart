@@ -3,8 +3,12 @@ import logo from './Assets/fake-logo.png'
 import cart from './Assets/cart.png'
 import './navbar.css'
 import { Link } from 'react-router-dom';
+import { useSelector} from "react-redux";
 
 const Navbar = () => {
+  const cart_json = useSelector((c) => c.cart) 
+  const cartSize = cart_json.length;
+
 
   return (
     <div className="nav-bar">
@@ -17,7 +21,7 @@ const Navbar = () => {
         <Link className=' adjust-cart' to="/cart"><img className='cart-logo' src={cart} alt="Logo" />
         </Link>
         <div className='total-cart'>
-          {12}
+          {cartSize}
         </div>
       </div>
 
