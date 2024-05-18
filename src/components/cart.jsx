@@ -1,10 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Navbar from './navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { removeProduct } from './slices/cartSlice';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const handleRemove = (id) => {
+    dispatch(removeProduct(id));
+  }
 
   return (
     <div>
@@ -24,9 +30,10 @@ const Cart = () => {
                     <p className="card-text">${item.price}</p>
                     <p className="card-text">{item.description}</p>
                     <p className="card-text"><strong>Category:</strong> {item.category}</p>
-                    <button className="btn btn-primary">Remove from Cart</button>
+                    <button onClick={() => handleRemove(item)} className="btn btn-danger">Remove from Cart</button>
                   </div>
                 </div>
+                
               </div>
             ))
           )}
