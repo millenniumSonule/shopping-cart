@@ -5,6 +5,6 @@ import productAPISlice from './slices/productAPISlice'
 export const store = configureStore({
     reducer: {
         cart: cartReducer,
-        product: productAPISlice,
+        products: productAPISlice,
     }
 });

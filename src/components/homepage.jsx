@@ -5,25 +5,14 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { addProduct } from './slices/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { getProducts } from './slices/productAPISlice'; 
 const Homepage = () => {
 
-  const [products,setProducts] = useState([]);
   const dispatch = useDispatch();
+  const {data: products} = useSelector(state => state.products);
 
-  const fetchMealDetails = async () => {
-    try {
-      const response = await axios.get(`https://fakestoreapi.com/products`);
-      console.log(response);
-      setProducts(response.data);
-      
-    } catch (error) {
-      console.error('Error fetching meal details:', error);
-    }
-  };
-
-  useEffect( () => {
-    fetchMealDetails();
+  useEffect( () => { 
+    dispatch(getProducts());
   },[])
 
   return (
