@@ -1,32 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Async thunk for fetching products
+export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
+    const response = await axios.get('https://fakestoreapi.com/products');
+    return response.data;
+});
+
 const initialState = {
-    data:[],
+    data: [],
+    status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+    error: null
 };
 
-export const productAPISlice = createSlice({
+const productAPISlice = createSlice({
     name: "products",
     initialState,
-    reducers: {
-
-        setProducts(state, action) {
-            state.data = action.payload;
-        }
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchProducts.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchProducts.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.data = action.payload;
+            })
+            .addCase(fetchProducts.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            });
     }
 });
 
-export const { setProducts } = productAPISlice.actions;
 export default productAPISlice.reducer;
-
-export function getProducts() {
-    return async function getProductsThunk(dispatch,getState) {
-        try {
-            const response = await axios.get(`https://fakestoreapi.com/products`);
-            const result = response.data;
-            dispatch(setProducts(result));
-        } catch (error) {
-            console.error("Failed to fetch products: ", error);
-        }
-    }
-}
