@@ -1,18 +1,17 @@
-import React , { useEffect, useState } from 'react'
+import React , { useEffect } from 'react'
 import './homepage.css'
 import Navbar from './navbar'
-import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { addProduct } from './slices/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProducts } from './slices/productAPISlice'; 
+import { fetchProducts } from './slices/productAPISlice'; 
 const Homepage = () => {
 
   const dispatch = useDispatch();
   const {data: products} = useSelector(state => state.products);
 
   useEffect( () => { 
-    dispatch(getProducts());
+    dispatch(fetchProducts());
   },[])
 
   return (
