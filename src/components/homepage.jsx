@@ -17,7 +17,7 @@ const Homepage = () => {
   return (
     <div className="homepage-container">
       <div className="navbar-top">
-        <Navbar/>
+        <Navbar/>a
       </div>
      
       <div className="plp-page">
